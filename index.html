@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wenjie Z. | Senior Front-End Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <a href="#hero" class="logo-wrap">
+      <div class="logo-icon">WZ</div>
+      <!-- EN name shown by default; zh name toggled via JS -->
+      <span id="nav-name">Wenjie Z.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+      <a href="#services" class="nav-link" data-i18n="nav.services">Services</a>
+      <a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a>
+      <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="hidden md:flex items-center gap-4">
+      <div id="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('zh')">中文</button>
+      </div>
+      <a href="#contact" class="btn-primary" style="padding:.5rem 1.25rem;font-size:.85rem;">
+        <span data-i18n="nav.hire">Hire Me on Upwork</span><span>→</span>
+      </a>
+    </div>
+    <button class="hamburger md:hidden" id="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <button onclick="toggleMobileMenu()" class="mobile-close">✕</button>
+  <a href="#about" class="mobile-nav-link" onclick="toggleMobileMenu()" data-i18n="nav.about">About</a>
+  <a href="#services" class="mobile-nav-link" onclick="toggleMobileMenu()" data-i18n="nav.services">Services</a>
+  <a href="#skills" class="mobile-nav-link" onclick="toggleMobileMenu()" data-i18n="nav.skills">Skills</a>
+  <a href="#contact" class="mobile-nav-link" onclick="toggleMobileMenu()" data-i18n="nav.contact">Contact</a>
+  <div class="lang-toggle-mobile">
+    <button class="lang-btn active" id="mob-en" onclick="setLang('en');toggleMobileMenu()">EN</button>
+    <button class="lang-btn" id="mob-zh" onclick="setLang('zh');toggleMobileMenu()">中文</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <canvas id="particle-canvas"></canvas>
+  <div class="orb orb-blue" style="width:600px;height:600px;top:-200px;left:-150px;"></div>
+  <div class="orb orb-cyan" style="width:500px;height:500px;bottom:-100px;right:-100px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-32 w-full hero-content">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="flex flex-col gap-7">
+        <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
+          <div class="badge"><div class="badge-dot"></div><span data-i18n="hero.badge">Available for Work</span></div>
+          <div class="avail-badge"><div class="avail-dot"></div><span data-i18n="hero.avail">Open to Projects</span></div>
+        </div>
+        <div>
+          <h1 class="hero-title">
+            <span class="gradient-text" id="typed-text"></span><span class="typed-cursor"></span><br/>
+            <span data-i18n="hero.title2">Developer</span>
+          </h1>
+          <div style="display:flex;align-items:center;gap:1rem;margin-top:.75rem;">
+            <div class="section-divider" style="margin:0;"></div>
+            <p class="hero-exp-tag" data-i18n="hero.exp">10+ Years · Pixel-Perfect · Fast Delivery</p>
+          </div>
+        </div>
+        <p class="hero-sub" data-i18n="hero.sub">I craft high-performance business websites, landing pages, and Figma-to-code conversions that drive real results. Trusted by 50+ global clients on Upwork.</p>
+        <!-- Hero CTA buttons -->
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="https://www.upwork.com/freelancers/~014ad575ce80b65ac2?mp_source=share" target="_blank" rel="noopener" class="btn-primary">
+            <span>🚀</span><span data-i18n="hero.cta1">Hire Me on Upwork</span>
+          </a>
+          <a href="#services" class="btn-outline"><span data-i18n="hero.cta2">View Services</span></a>
+        </div>
+        <div class="hero-trust">
+          <div style="display:flex;align-items:center;gap:.5rem;">
+            <div class="stars">★★★★★</div>
+            <span class="trust-text" data-i18n="hero.rating">5.0 · 80+ Reviews</span>
+          </div>
+          <div class="trust-sep"></div>
+          <div class="trust-text" data-i18n="hero.upwork">Top Rated on Upwork</div>
+          <div class="trust-sep"></div>
+          <div class="trust-text" data-i18n="hero.speed">48h Delivery</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <!-- Code card -->
+        <div class="code-card">
+          <div class="code-dots">
+            <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+            <span class="code-filename">portfolio.js</span>
+          </div>
+          <div class="code-body">
+            <div><span class="c-purple">const</span> <span class="c-blue">developer</span> <span class="c-white">=</span> <span class="c-green">{</span></div>
+            <div style="padding-left:1.25rem;"><span class="c-red">name</span><span class="c-white">:</span> <span class="c-yellow">'Wenjie Z. (张文杰)'</span><span class="c-white">,</span></div>
+            <div style="padding-left:1.25rem;"><span class="c-red">exp</span><span class="c-white">:</span> <span class="c-yellow">'10+ years'</span><span class="c-white">,</span></div>
+            <div style="padding-left:1.25rem;"><span class="c-red">skills</span><span class="c-white">:</span> <span class="c-green">[</span><span class="c-yellow">'HTML','CSS','JS','Vue','React'</span><span class="c-green">]</span><span class="c-white">,</span></div>
+            <div style="padding-left:1.25rem;"><span class="c-red">available</span><span class="c-white">:</span> <span class="c-green">true</span></div>
+            <div><span class="c-green">}</span></div>
+          </div>
+        </div>
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="stat-card"><div class="stat-num"><span class="counter-num" data-target="10">0</span>+</div><div class="stat-label" data-i18n="stat.years">Years Exp.</div></div>
+          <div class="stat-card"><div class="stat-num"><span class="counter-num" data-target="120">0</span>+</div><div class="stat-label" data-i18n="stat.projects">Projects Done</div></div>
+          <div class="stat-card"><div class="stat-num"><span class="counter-num" data-target="50">0</span>+</div><div class="stat-label" data-i18n="stat.clients">Happy Clients</div></div>
+          <div class="stat-card"><div class="stat-num"><span class="counter-num" data-target="5">0</span>.0</div><div class="stat-label" data-i18n="stat.rating">Rating Score</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator-wrap">
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span data-i18n="hero.scroll">Scroll Down</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="flex justify-center fade-up">
+        <div class="about-img-card">
+          <div class="about-avatar">WZ</div>
+          <div class="about-float-badge" style="top:1.5rem;right:-1rem;">
+            <span style="font-size:1.2rem;">🏆</span>
+            <div><div class="fb-title" data-i18n="about.badge1a">Top Rated</div><div class="fb-sub" data-i18n="about.badge1b">Upwork 2024</div></div>
+          </div>
+          <div class="about-float-badge" style="bottom:1.5rem;left:-1rem;">
+            <div class="fb-icon">48h</div>
+            <div><div class="fb-title" data-i18n="about.badge2a">Fast Delivery</div><div class="fb-sub" data-i18n="about.badge2b">Avg. turnaround</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-6">
+        <div class="fade-up fade-up-delay-1">
+          <div class="section-badge" data-i18n="about.badge">About Me</div>
+          <h2 class="section-title" data-i18n="about.title">Turning Designs Into<br/><span class="gradient-text">High-Performance</span> Websites</h2>
+          <div class="section-divider"></div>
+          <p class="section-desc" data-i18n="about.desc">With 10+ years of front-end expertise, I specialize in building pixel-perfect business websites and marketing landing pages. From Figma mockup to fully deployed site — I deliver on time, every time.</p>
+        </div>
+        <div class="fade-up fade-up-delay-2">
+          <div class="exp-item"><div class="exp-icon">🎯</div><div><div class="exp-title" data-i18n="about.exp1t">Business Website Specialist</div><div class="exp-desc" data-i18n="about.exp1d">Corporate sites, SaaS landing pages, e-commerce storefronts</div></div></div>
+          <div class="exp-item"><div class="exp-icon">⚡</div><div><div class="exp-title" data-i18n="about.exp2t">Pixel-Perfect Figma-to-Code</div><div class="exp-desc" data-i18n="about.exp2d">I turn any design file into production-ready, responsive HTML/CSS/JS</div></div></div>
+          <div class="exp-item"><div class="exp-icon">🌍</div><div><div class="exp-title" data-i18n="about.exp3t">Global Client Experience</div><div class="exp-desc" data-i18n="about.exp3d">US, UK, AU, CA clients — fluent communication in English</div></div></div>
+        </div>
+        <div class="fade-up fade-up-delay-3">
+          <p class="process-label" data-i18n="about.process">My Process</p>
+          <div class="process-step"><div class="step-num">01</div><div><div class="step-title" data-i18n="about.step1t">Brief &amp; Discovery</div><div class="step-desc" data-i18n="about.step1d">Understand your brand, goals, and target audience</div></div></div>
+          <div class="process-step"><div class="step-num">02</div><div><div class="step-title" data-i18n="about.step2t">Design &amp; Develop</div><div class="step-desc" data-i18n="about.step2d">Pixel-perfect, responsive, and performance-optimized code</div></div></div>
+          <div class="process-step"><div class="step-num">03</div><div><div class="step-title" data-i18n="about.step3t">Deliver &amp; Deploy</div><div class="step-desc" data-i18n="about.step3d">Clean code handoff + deployment on your preferred platform</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section section-alt" style="position:relative;overflow:hidden;">
+  <div class="orb orb-blue" style="width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.12;"></div>
+  <div class="max-w-7xl mx-auto px-6 relative" style="z-index:1;">
+    <div class="text-center mb-16 fade-up">
+      <div class="section-badge" style="justify-content:center;" data-i18n="services.badge">What I Do</div>
+      <h2 class="section-title mt-2" data-i18n="services.title">Services That<br/><span class="gradient-text">Drive Results</span></h2>
+      <div class="section-divider" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="section-desc" style="margin:0 auto;text-align:center;" data-i18n="services.desc">End-to-end front-end development services for businesses that want to stand out online.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="service-card fade-up fade-up-delay-1"><div class="service-icon">🎨</div><div class="service-title" data-i18n="s1.title">Figma to Website</div><div class="service-desc" data-i18n="s1.desc">Pixel-perfect conversion of any Figma, Adobe XD or Sketch design into clean, optimized HTML/CSS/JS.</div><div class="service-tag" data-i18n="s1.tag">Design → Code</div></div>
+      <div class="service-card fade-up fade-up-delay-2"><div class="service-icon">🌐</div><div class="service-title" data-i18n="s2.title">Responsive Business Site</div><div class="service-desc" data-i18n="s2.desc">Full corporate websites that look stunning on every device — desktop, tablet, and mobile.</div><div class="service-tag" data-i18n="s2.tag">All Devices</div></div>
+      <div class="service-card fade-up fade-up-delay-3"><div class="service-icon">🚀</div><div class="service-title" data-i18n="s3.title">Landing Page Development</div><div class="service-desc" data-i18n="s3.desc">High-converting marketing landing pages with animations, CTA sections, and optimized performance.</div><div class="service-tag" data-i18n="s3.tag">High Conversion</div></div>
+      <div class="service-card fade-up fade-up-delay-4"><div class="service-icon">⚡</div><div class="service-title" data-i18n="s4.title">Website Optimization</div><div class="service-desc" data-i18n="s4.desc">Speed audit, Core Web Vitals improvement, SEO fixes, and code refactoring for better performance.</div><div class="service-tag" data-i18n="s4.tag">Performance ↑</div></div>
+    </div>
+    <!-- Testimonials -->
+    <div class="mt-16 grid md:grid-cols-3 gap-6 fade-up">
+      <div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="t-text" data-i18n="t1.text">"Wenjie delivered our 5-page business website in just 3 days. Pixel-perfect match to our Figma design, clean code, and great communication throughout the project. Helped us get our business online quickly, highly recommend."</p><div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#2563eb,#06b6d4);">JM</div><div><div class="t-name" data-i18n="t1.name">James Mitchell</div><div class="t-loc" data-i18n="t1.loc">🇺🇸 Small Business Owner, New York, USA</div></div></div></div>
+      <div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="t-text" data-i18n="t2.text">"Excellent Figma to HTML work with amazing attention to detail. The site works perfectly on every device, and Wenjie handled all my small tweaks within hours. I'll be working with him on all my client projects from now on."</p><div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4);">SC</div><div><div class="t-name" data-i18n="t2.name">Sarah Clarke</div><div class="t-loc" data-i18n="t2.loc">🇬🇧 Freelance Web Designer, London, UK</div></div></div></div>
+      <div class="testimonial-card"><div class="stars mb-3">★★★★★</div><p class="t-text" data-i18n="t3.text">"Fast, professional, and exactly what we needed. The landing page he built boosted our conversion rate by 28%, delivered on time with zero revisions needed. Great value for the price."</p><div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#0891b2,#2563eb);">RL</div><div><div class="t-name" data-i18n="t3.name">Ryan Lee</div><div class="t-loc" data-i18n="t3.loc">🇦🇺 Digital Marketing Specialist, Sydney, Australia</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 fade-up">
+      <div class="section-badge" style="justify-content:center;" data-i18n="skills.badge">Technical Stack</div>
+      <h2 class="section-title mt-2" data-i18n="skills.title">Skills &amp;<br/><span class="gradient-text">Technologies</span></h2>
+      <div class="section-divider" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="section-desc" style="margin:0 auto;text-align:center;" data-i18n="skills.desc">Modern tools and frameworks for building fast, scalable, and beautiful web experiences.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <div class="flex flex-col gap-4 fade-up fade-up-delay-1">
+        <div class="skill-item"><div class="skill-header"><div class="skill-name">🌐 HTML5 + CSS3</div><div class="skill-pct">98%</div></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><div class="skill-name">⚡ JavaScript (ES6+)</div><div class="skill-pct">95%</div></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><div class="skill-name">💚 Vue.js 3</div><div class="skill-pct">92%</div></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><div class="skill-name">⚛️ React</div><div class="skill-pct">90%</div></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><div class="skill-name">🔷 TypeScript</div><div class="skill-pct">88%</div></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><div class="skill-name">🎨 Tailwind CSS</div><div class="skill-pct">96%</div></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="96"></div></div></div>
+      </div>
+      <div class="flex flex-col gap-8 fade-up fade-up-delay-2">
+        <div>
+          <p class="tools-label" data-i18n="skills.tools">Tools &amp; Ecosystem</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+            <div class="tech-badge">🎨 Figma</div><div class="tech-badge">⚙️ Webpack</div><div class="tech-badge">🔥 Vite</div>
+            <div class="tech-badge">🐙 Git / GitHub</div><div class="tech-badge">▲ Vercel</div><div class="tech-badge">☁️ Netlify</div>
+            <div class="tech-badge">🎯 GSAP</div><div class="tech-badge">📱 PWA</div><div class="tech-badge">🔍 SEO</div>
+            <div class="tech-badge">📊 Analytics</div><div class="tech-badge">🌊 Framer Motion</div><div class="tech-badge">💨 CSS Animations</div>
+          </div>
+        </div>
+        <div>
+          <p class="tools-label" data-i18n="skills.spec">Core Specialties</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+            <div class="spec-card"><div style="font-size:1.5rem;margin-bottom:.4rem;">📐</div><div class="spec-label" data-i18n="spec.p2c">Pixel-Perfect</div></div>
+            <div class="spec-card"><div style="font-size:1.5rem;margin-bottom:.4rem;">📱</div><div class="spec-label" data-i18n="spec.resp">Responsive</div></div>
+            <div class="spec-card"><div style="font-size:1.5rem;margin-bottom:.4rem;">🚀</div><div class="spec-label" data-i18n="spec.perf">Performance</div></div>
+            <div class="spec-card"><div style="font-size:1.5rem;margin-bottom:.4rem;">✨</div><div class="spec-label" data-i18n="spec.anim">Animations</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact" class="section" style="position:relative;">
+  <div class="cta-bg"></div>
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="cta-card fade-up">
+      <div class="cta-glow"></div>
+      <div class="text-center" style="position:relative;z-index:1;">
+        <div class="avail-badge" style="display:inline-flex;margin-bottom:1.5rem;"><div class="avail-dot"></div><span data-i18n="cta.avail">Currently Available · Fast Response</span></div>
+        <h2 class="section-title mb-4" data-i18n="cta.title">Ready to Build<br/><span class="gradient-text">Your Dream Website?</span></h2>
+        <p class="cta-desc" data-i18n="cta.desc">Let's create something exceptional together. Drop me a message on Upwork and I'll respond within a few hours.</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:2rem;">
+          <!-- Upwork 雇佣按钮（中英文页面都显示） -->
+          <a href="https://www.upwork.com/freelancers/~014ad575ce80b65ac2?mp_source=share"
+             target="_blank" rel="noopener"
+             class="btn-primary" style="font-size:1rem;padding:.9rem 2.4rem;">
+            <span>🚀</span><span data-i18n="cta.btn1">Hire Me on Upwork</span>
+          </a>
+          <!-- 海外邮箱（中英文页面都显示） -->
+          <a href="mailto:a1195835044@gmail.com" class="btn-outline" style="font-size:1rem;padding:.9rem 2.4rem;">
+            <span>✉️</span><span>a1195835044@gmail.com</span>
+          </a>
+        </div>
+
+        <!-- 联系方式详情 -->
+        <div class="contact-info-grid">
+          <!-- 海外邮箱（中英文都显示） -->
+          <div class="contact-info-item">
+            <div class="cta-meta-label" data-i18n="cta.emailLabel">Email (Global)</div>
+            <a href="mailto:a1195835044@gmail.com" class="contact-link">a1195835044@gmail.com</a>
+          </div>
+          <!-- 国内邮箱（仅中文显示） -->
+          <div class="contact-info-item zh-only">
+            <div class="cta-meta-label">国内邮箱</div>
+            <a href="mailto:1195835044@qq.com" class="contact-link">1195835044@qq.com</a>
+          </div>
+          <!-- 国内手机号（仅中文显示） -->
+          <div class="contact-info-item zh-only">
+            <div class="cta-meta-label">手机 / 微信</div>
+            <span class="contact-link-plain">13259453057</span>
+          </div>
+        </div>
+        <div class="cta-meta">
+          <div class="cta-meta-item"><div class="cta-meta-label" data-i18n="cta.resp">Response Time</div><div class="cta-meta-val" data-i18n="cta.respval">&lt; 4 Hours</div></div>
+          <div class="cta-meta-item"><div class="cta-meta-label" data-i18n="cta.avail2">Availability</div><div class="cta-meta-val" style="color:#22c55e;" data-i18n="cta.avail2val">Open to Work ✓</div></div>
+          <div class="cta-meta-item"><div class="cta-meta-label" data-i18n="cta.timezone">Time Zone</div><div class="cta-meta-val" data-i18n="cta.tzval">UTC+8 · Flexible</div></div>
+          <div class="cta-meta-item"><div class="cta-meta-label" data-i18n="cta.rate">Rating</div><div class="cta-meta-val">5.0 ★ (80+ reviews)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="footer-inner">
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="logo-icon" style="width:32px;height:32px;font-size:.85rem;">WZ</div>
+        <!-- EN name default; toggled by JS -->
+        <span id="footer-name" style="font-weight:700;color:#e2e8f0;">Wenjie Z.</span>
+        <span style="color:#334155;margin:0 .25rem;">·</span>
+        <span style="color:#475569;font-size:.85rem;" data-i18n="footer.tagline">Senior Front-End Developer</span>
+      </div>
+      <div style="color:#334155;font-size:.8rem;" data-i18n="footer.copy">© 2024 Wenjie Z. All rights reserved.</div>
+      <a href="#hero" class="footer-top" data-i18n="footer.top">↑ Back to Top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
