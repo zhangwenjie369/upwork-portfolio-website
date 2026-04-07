@@ -1,11 +1,11 @@
-# Upwork Portfolio Website - Wenjie Z.
+<img width="2559" height="1527" alt="image" src="https://github.com/user-attachments/assets/553f481f-9fe4-4d20-9fa0-5d3a0d0f56e1" /># Upwork Portfolio Website - Wenjie Z.
 
 This is my personal portfolio website built for Upwork, designed to showcase my front-end development skills for business websites, landing pages, and Figma-to-code projects.
 
 ---
 
 ## 🚀 Live Demo
-https://upwork-portfolio-website-ok95n1k2.vercel.app
+[https://upwork-portfolio-website-ok95n1k2.vercel.app](https://upwork-portfolio-website-zeta.vercel.app  )
 
 ## ✨ Features
 - Fully responsive design for desktop, tablet, and mobile
